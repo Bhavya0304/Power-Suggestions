@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+	<Include href="KnownImageIds.vsct"/>
+	<Include href="VSGlobals.vsct"/>
+
+	<Commands package="PowerSuggestion">
+		<Groups>
+			<Group guid="PowerSuggestion" id="CRMMenu" priority="0x0600">
+				<Parent guid="VSMainMenu" id="Tools"/>
+
+			</Group>
+		</Groups>
+
+		<!--This section defines the elements the user can interact with, like a menu command or a button
+        or combo box in a toolbar. -->
+		<Buttons>
+
+			<Button guid="PowerSuggestion" id="ConnectCRM" priority="0x0100" type="Button">
+				<Parent guid="PowerSuggestion" id="CRMMenu" />
+				<Icon guid="ImageCatalogGuid" id="ConnectToEnvironment" />
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Connect To CRM</ButtonText>
+					<LocCanonicalName>.PowerSuggestion.ConnectCRM</LocCanonicalName>
+				</Strings>
+			</Button>
+			<Button guid="PowerSuggestion" id="OpenSuggestionWindow" priority="0x0101" type="Button">
+				<Parent guid="PowerSuggestion" id="CRMMenu" />
+				<Icon guid="ImageCatalogGuid" id="DynamicsCRM" />
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Open CRM Suggestions ToolBox</ButtonText>
+					<LocCanonicalName>.PowerSuggestion.OpenSuggestionWindow</LocCanonicalName>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
+
+	<Symbols>
+		<GuidSymbol name="PowerSuggestion" value="{f1e4e6b5-6ce4-4407-8f6a-0605a07ce473}">
+			<IDSymbol name="CRMMenu" value="0x0001" />
+			<IDSymbol name="ConnectCRM" value="0x0100" />
+			<IDSymbol name="OpenSuggestionWindow" value="0x0101" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
