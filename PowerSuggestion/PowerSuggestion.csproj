@@ -48,11 +48,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Actions\CRMSuggestionActions.cs" />
+    <Compile Include="Actions\WebResourceAction.cs" />
     <Compile Include="Commands\OpenSuggestionWindow.cs" />
+    <Compile Include="Helpers\Convertors.cs" />
     <Compile Include="Helpers\Enums.cs" />
+    <Compile Include="Helpers\ViewModel.cs" />
+    <Compile Include="Helpers\VsTheme.cs" />
+    <Compile Include="Commands\PublishWebResource.cs" />
+    <Compile Include="Modal\ToolWindows\JavascriptUpload.xaml.cs">
+      <DependentUpon>JavascriptUpload.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AttributeMetadata.cs" />
     <Compile Include="Models\CRMService.cs" />
     <Compile Include="Models\EntityMetadata.cs" />
+    <Compile Include="Models\WebResourceMetedata.cs" />
     <Compile Include="Options\ConnectionParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\ConnectCRM.cs" />
@@ -68,10 +77,15 @@
     <Compile Include="ToolWindows\Panels\AllEntitiesPanel.xaml.cs">
       <DependentUpon>AllEntitiesPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToolWindows\Panels\AttributeProperty.xaml.cs">
+      <DependentUpon>AttributeProperty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ToolWindows\SuggestionWindow.cs" />
     <Compile Include="ToolWindows\SuggestionWindowControl.xaml.cs">
       <DependentUpon>SuggestionWindowControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AttributeMetadataModel.cs" />
+    <Compile Include="ViewModels\WebResourceModel.cs" />
     <Compile Include="VSCommandTable.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,9 +107,9 @@
       <Generator>VsixManifestGenerator</Generator>
       <LastGenOutput>source.extension.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\Backwards.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\Copy.png" />
+    <Resource Include="Resources\AddClause.png" />
+    <Resource Include="Resources\Backwards.png" />
     <Content Include="Resources\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -132,11 +146,19 @@
     <Folder Include="ToolWindows\Common\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Modal\ToolWindows\JavascriptUpload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ToolWindows\Panels\AllAttributesPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToolWindows\Panels\AllEntitiesPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolWindows\Panels\AttributeProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

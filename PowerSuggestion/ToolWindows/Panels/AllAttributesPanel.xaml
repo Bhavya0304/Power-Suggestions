@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PowerSuggestion.ToolWindows.Panels"
+             xmlns:Theme="clr-namespace:PowerSuggestion.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -20,11 +21,18 @@
 
             </StackPanel>
             <StackPanel>
-                <TextBox x:Name="SearchBox" Background="White" TextChanged="Search">
+                <TextBox x:Name="SearchBox" TextChanged="Search">
 
                 </TextBox>
             </StackPanel>
-            <ListView x:Name="AttributeListView" Background="White">
+            <ListView x:Name="AttributeListView">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Tag" Value="{Binding LogicalName}"/>
+                        <EventSetter Event="MouseDoubleClick" Handler="GoNext"></EventSetter>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.Template>
                     <ControlTemplate>
                         <ScrollViewer Height="500" VerticalScrollBarVisibility="Hidden">
@@ -34,20 +42,44 @@
                 </ListView.Template>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <WrapPanel Margin="0 2">
-                            <StackPanel>
+                        
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
-                                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="{Binding DisplayName}" VerticalAlignment="Center" Grid.Column="0">
 
                                     </TextBlock>
-                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                        <Button Height="20" Tag="{Binding Id}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="GoNext">
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
+                                            <Button.ToolTip>
+                                                <ToolTip>
+                                                    Insert Logical Name
+                                                </ToolTip>
+                                            </Button.ToolTip>
+                                            <StackPanel >
+                                                <Image Source="../../Resources/AddClause.png" Height="20"  />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
+                                            <Button.ToolTip>
+                                                <ToolTip>
+                                                    Copy Logical Name
+                                                </ToolTip>
+                                            </Button.ToolTip>
+                                            <StackPanel >
+                                                <Image Source="../../Resources/Copy.png" Height="20" Width="20"  />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="GoNext">
+                                            <Button.ToolTip>
+                                                <ToolTip>
+                                                    Go Inside
+                                                </ToolTip>
+                                            </Button.ToolTip>
                                             <StackPanel>
-                                                <Image Source="../../Resources/NextDocument.png"  />
+                                                <Image Source="../../Resources/NextDocument.png" Height="20" Width="20"  />
                                             </StackPanel>
                                         </Button>
 
@@ -55,8 +87,7 @@
 
                                 </Grid>
 
-                            </StackPanel>
-                        </WrapPanel>
+                           
                     </DataTemplate>
                 </ListView.ItemTemplate>
 

@@ -9,8 +9,11 @@ namespace PowerSuggestion.Models
     public class AttributeMetadata
     {
         public string DisplayName { get; set; }
+
         public string SchemaName { get; set; }
+
         public string LogicalName { get; set; }
+        public string PluralName { get; set; }
         public string AttributeType { get; set; }
         public Guid Id { get; set; }
         public List<OptionSet> Options { get; set; }

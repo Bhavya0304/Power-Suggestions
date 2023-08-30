@@ -10,6 +10,7 @@
              xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit" 
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:Panels="clr-namespace:PowerSuggestion.ToolWindows.Panels"
+             xmlns:Theme="clr-namespace:PowerSuggestion.Helpers"
              mc:Ignorable="d"
              d:DesignHeight="500"
              d:DesignWidth="500"
@@ -29,16 +30,16 @@
                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Grid.Row="0"  Orientation="Horizontal" Margin="5 0">
-                    <Button Height="20" Margin="0 0 10 0" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="GoBack" >
-                        <StackPanel >
-                            <Image Source="../Resources/Backwards.png"  />
+                    <Button Width="20" Height="20"  Margin="0 0 5 0" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="GoBack" >
+                        <StackPanel HorizontalAlignment="Left">
+                            <Image Source="../Resources/Backwards.png" Width="20"   />
                         </StackPanel>
                     </Button>
-                    <HeaderedContentControl HorizontalAlignment="Center" Content="CRM Suggestion Tool Window"  FontWeight="UltraBold" VerticalAlignment="Center">
-
+                    <HeaderedContentControl HorizontalAlignment="Center" FontWeight="UltraBold" VerticalAlignment="Center">
+                        CRM Suggestion Tool Window
                     </HeaderedContentControl>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="0" Margin="5 0" VerticalAlignment="Center">
+                <StackPanel Grid.Column="1" Margin="5 0" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Click="OnReset">
                         <StackPanel>
                             <Image Source="../Resources/Refresh.png"  />
@@ -71,8 +72,9 @@
             <Grid>
                 <Panels:AllEntitiesPanel x:Name="EntityPanel" VerticalAlignment="Top" Grid.Row="0"></Panels:AllEntitiesPanel>
                 <Panels:AllAttributesPanel x:Name="AttributePanel" VerticalAlignment="Top" Grid.Row="0"></Panels:AllAttributesPanel>
+                <Panels:AttributeProperty x:Name="SingleAttributePanel" VerticalAlignment="Top" Grid.Row="0"></Panels:AttributeProperty>
             </Grid>
-           
+
         </StackPanel>
 
 

@@ -5,6 +5,7 @@
     {
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
+
             await SuggestionWindow.ShowAsync();
         }
     }

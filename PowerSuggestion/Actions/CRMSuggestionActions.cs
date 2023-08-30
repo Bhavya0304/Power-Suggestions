@@ -70,5 +70,45 @@ namespace PowerSuggestion.Actions
                 return null;
             }
         }
+
+        public Models.AttributeMetadata GetAttributeMetadata(string EntityLogicalName, string AttributeLogicalName)
+        {
+            try
+            {
+                RetrieveAttributeRequest attributeRequest = new RetrieveAttributeRequest
+                {
+                    EntityLogicalName = EntityLogicalName,
+                    LogicalName = AttributeLogicalName,
+                    RetrieveAsIfPublished = false
+                };
+                RetrieveAttributeResponse response = CRMService.Service.Execute(attributeRequest) as RetrieveAttributeResponse;
+                EnumAttributeMetadata attributeData = response.AttributeMetadata is EnumAttributeMetadata ? (EnumAttributeMetadata)response.AttributeMetadata : null;
+                Models.AttributeMetadata Attribute = new Models.AttributeMetadata()
+                {
+                    DisplayName = response.AttributeMetadata.DisplayName.UserLocalizedLabel == null ? response.AttributeMetadata.LogicalName.ToString() : response.AttributeMetadata.DisplayName.UserLocalizedLabel.Label.ToString(),
+                    LogicalName = response.AttributeMetadata.LogicalName,
+                    AttributeType = response.AttributeMetadata.AttributeType.ToString(),
+                    SchemaName = response.AttributeMetadata.SchemaName,
+                    Options = attributeData != null ? (from option in attributeData.OptionSet.Options
+                                                       select new OptionSet()
+                                                       {
+                                                           OptionSetValue = option.Value.ToString(),
+                                                           OptionSetName = option.Label.UserLocalizedLabel.Label
+
+                                                       }).ToList() : null
+
+                };
+
+                return Attribute;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+        }
+
+
     }
 }

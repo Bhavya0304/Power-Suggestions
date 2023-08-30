@@ -26,6 +26,7 @@ namespace PowerSuggestion
             ShowHideOnConnection();
             this.SizeChanged += OnWindowSizeChanged;
             EntityPanel.CallNext = CallNext;
+            AttributePanel.CallNext = CallNextToProperty;
 
         }
 
@@ -33,6 +34,13 @@ namespace PowerSuggestion
         {
             AttributePanel.CurrentEntityName = LogicalName;
             PageControl = CurrentPage.AllAttributes;
+            ShowAction();
+        }
+        private void CallNextToProperty(string LogicalName, string EnitityName)
+        {
+            SingleAttributePanel.CurrentEntityName = EnitityName;
+            SingleAttributePanel.CurrentAttributeName = LogicalName;
+            PageControl = CurrentPage.SingleAttributes;
             ShowAction();
         }
 
@@ -51,6 +59,11 @@ namespace PowerSuggestion
                 PageControl = CurrentPage.AllEntities;
                 ShowAction();
             }
+            if (PageControl == CurrentPage.SingleAttributes)
+            {
+                PageControl = CurrentPage.AllAttributes;
+                ShowAction();
+            }
         }
         private void ShowAction()
         {
@@ -58,13 +71,24 @@ namespace PowerSuggestion
             {
                 EntityPanel.Visibility = Visibility.Visible;
                 AttributePanel.Visibility = Visibility.Hidden;
+                SingleAttributePanel.Visibility = Visibility.Hidden;
+
                 EntityPanel.OnReset();
             }
             else if (PageControl == CurrentPage.AllAttributes)
             {
                 EntityPanel.Visibility = Visibility.Hidden;
                 AttributePanel.Visibility = Visibility.Visible;
+                SingleAttributePanel.Visibility = Visibility.Hidden;
+
                 AttributePanel.OnReset();
+            }
+            else if (PageControl == CurrentPage.SingleAttributes)
+            {
+                EntityPanel.Visibility = Visibility.Hidden;
+                AttributePanel.Visibility = Visibility.Hidden;
+                SingleAttributePanel.Visibility = Visibility.Visible;
+                SingleAttributePanel.OnReset();
             }
         }
         private bool ShowHideOnConnection()

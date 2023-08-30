@@ -23,5 +23,7 @@ namespace PowerSuggestion
         public const int CRMMenu = 0x0001;
         public const int ConnectCRM = 0x0100;
         public const int OpenSuggestionWindow = 0x0101;
+        public const int PublishWRFile = 0x0102;
+        public const int WRMenu = 0x0103;
     }
 }

@@ -12,12 +12,23 @@
 				<Parent guid="VSMainMenu" id="Tools"/>
 
 			</Group>
+			<Group guid="PowerSuggestion" id="WRMenu" priority="0x0600">
+				<!--<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>-->
+			</Group>
 		</Groups>
 
 		<!--This section defines the elements the user can interact with, like a menu command or a button
         or combo box in a toolbar. -->
 		<Buttons>
-
+			<Button guid="PowerSuggestion" id="PublishWRFile" priority="0x0100" type="Button">
+				<Parent guid="PowerSuggestion" id="WRMenu" />
+				<Icon guid="ImageCatalogGuid" id="ConnectToEnvironment" />
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Publish Web Resource File</ButtonText>
+					<LocCanonicalName>.PowerSuggestion.PublishWRFile</LocCanonicalName>
+				</Strings>
+			</Button>
 			<Button guid="PowerSuggestion" id="ConnectCRM" priority="0x0100" type="Button">
 				<Parent guid="PowerSuggestion" id="CRMMenu" />
 				<Icon guid="ImageCatalogGuid" id="ConnectToEnvironment" />
@@ -38,12 +49,20 @@
 			</Button>
 		</Buttons>
 	</Commands>
+	<CommandPlacements>
+		<CommandPlacement guid="PowerSuggestion" id="WRMenu" priority="0xF00">
+			<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+		</CommandPlacement>
+
+	</CommandPlacements>
 
 	<Symbols>
 		<GuidSymbol name="PowerSuggestion" value="{f1e4e6b5-6ce4-4407-8f6a-0605a07ce473}">
 			<IDSymbol name="CRMMenu" value="0x0001" />
 			<IDSymbol name="ConnectCRM" value="0x0100" />
 			<IDSymbol name="OpenSuggestionWindow" value="0x0101" />
+			<IDSymbol name="PublishWRFile" value="0x0102" />
+			<IDSymbol name="WRMenu" value="0x0103" />
 		</GuidSymbol>
 	</Symbols>
 </CommandTable>
