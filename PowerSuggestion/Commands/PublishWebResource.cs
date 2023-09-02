@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.Shell;
 using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
+using System.Windows;
 
 namespace PowerSuggestion.MenuItem
 {
@@ -28,10 +29,22 @@ namespace PowerSuggestion.MenuItem
                 var projectItem = selectedItem.ProjectItem;
 
                 filePath = projectItem.Properties.Item("FullPath").Value.ToString();
+                if (js.viewModel != null)
+                {
+                    js.viewModel.JSFile = filePath;
+                    js.viewModel.JSFilepath = filePath;
+                    js.viewModel.JSFileName = projectItem.Name;
+                    //js.ShowDialogAsync();
+                    js.Show();
+                }
 
             }
-            js.viewModel.JSFile = filePath;
-            js.ShowDialog();
+            else
+            {
+                VS.MessageBox.ShowErrorAsync("Not Supported Action", "Please Select One and Only One Item");
+            }
+
+
         }
     }
 }

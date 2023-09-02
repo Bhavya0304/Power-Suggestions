@@ -26,10 +26,23 @@ namespace PowerSuggestion.ToolWindows.Panels
         private CRMSuggestionActions suggestionActions;
         private List<Models.EntityMetadata> entitiesData;
         private Delegate _CallNext;
+        private Delegate _showLoader;
+        private Delegate _hideLoader;
+        public Delegate ShowLoader
+        {
+            set { _showLoader = value; }
+        }
+
+        public Delegate HideLoader
+        {
+            set { _hideLoader = value; }
+        }
         public Delegate CallNext
         {
             set { _CallNext = value; }
         }
+
+
 
         public AllEntitiesPanel()
         {
@@ -88,13 +101,23 @@ namespace PowerSuggestion.ToolWindows.Panels
 
         private async Task GetAllEntitiesAsync()
         {
-
+            if(_showLoader != null)
+            {
+                _showLoader.DynamicInvoke();
+            }
+            
             List<Models.EntityMetadata> data = await Task.Run(() =>
             {
                 return suggestionActions.GetAllEntities();
             });
             entitiesData = data;
             CreateEntityList(entitiesData);
+            if(_hideLoader != null)
+            {
+                _hideLoader.DynamicInvoke();
+            }
+            
+
 
         }
 

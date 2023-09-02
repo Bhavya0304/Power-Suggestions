@@ -29,5 +29,12 @@ namespace PowerSuggestion.Helpers
             XSL = 9,
             ISO = 10
         }
+
+        public enum SolutionComponentType
+        {
+            Entity = 1,
+            WebResource = 61,
+            OptionSet = 9
+        }
     }
 }

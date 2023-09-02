@@ -25,6 +25,17 @@ namespace PowerSuggestion.ToolWindows.Panels
         private List<Models.AttributeMetadata> entitiesData;
         public string CurrentEntityName = "";
         private Delegate _CallNext;
+        private Delegate _showLoader;
+        private Delegate _hideLoader;
+        public Delegate ShowLoader
+        {
+            set { _showLoader = value; }
+        }
+
+        public Delegate HideLoader
+        {
+            set { _hideLoader = value; }
+        }
         public Delegate CallNext
         {
             set { _CallNext = value; }
@@ -89,13 +100,15 @@ namespace PowerSuggestion.ToolWindows.Panels
 
         private async Task GetAllAttributesAsync(string EntityName)
         {
-
+            _showLoader.DynamicInvoke();
             List<Models.AttributeMetadata> data = await Task.Run(() =>
             {
                 return suggestionActions.GetEntityWithAttributes(EntityName);
             });
             entitiesData = data;
             CreateAttributeList(entitiesData);
+            _hideLoader.DynamicInvoke();
+
 
         }
 

@@ -22,7 +22,7 @@
 		<Buttons>
 			<Button guid="PowerSuggestion" id="PublishWRFile" priority="0x0100" type="Button">
 				<Parent guid="PowerSuggestion" id="WRMenu" />
-				<Icon guid="ImageCatalogGuid" id="ConnectToEnvironment" />
+				<Icon guid="ImageCatalogGuid" id="PublishCurrentWebSite" />
 				<CommandFlag>IconIsMoniker</CommandFlag>
 				<Strings>
 					<ButtonText>Publish Web Resource File</ButtonText>

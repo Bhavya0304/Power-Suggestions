@@ -29,6 +29,17 @@ namespace PowerSuggestion.ToolWindows.Panels
         public AttributeMetadataModel AttributeMetadata;
         public string CurrentAttributeName = "";
         public string CurrentEntityName = "";
+        private Delegate _showLoader;
+        private Delegate _hideLoader;
+        public Delegate ShowLoader
+        {
+            set { _showLoader = value; }
+        }
+
+        public Delegate HideLoader
+        {
+            set { _hideLoader = value; }
+        }
 
 
         public AttributeProperty()
@@ -50,7 +61,7 @@ namespace PowerSuggestion.ToolWindows.Panels
 
         private async Task GetAttributesAsync(string EntityName, string AttributeName)
         {
-
+            _showLoader.DynamicInvoke();
             Models.AttributeMetadata data = await Task.Run(() =>
             {
                 return suggestionActions.GetAttributeMetadata(EntityName, AttributeName);
@@ -64,7 +75,7 @@ namespace PowerSuggestion.ToolWindows.Panels
             {
                 Options.Visibility = Visibility.Visible;
             }
-
+            _hideLoader.DynamicInvoke();
         }
 
 

@@ -4,27 +4,90 @@
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                         xmlns:platform="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
-                        
+                        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
                         mc:Ignorable="d"
                         Width="600"
-                        Height="200"
+                        Height="285"
                         >
-    <Grid Margin="50">
-        <!--xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
-                        toolkit:Themes.UseVsTheme="True"-->
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
-            <Label VerticalAlignment="Center">Online Resource To Update:</Label>
-            <ComboBox SelectedIndex="0" Height="20" Width="180" ToolTip="Leave Empty to create new resource">
 
-                <ComboBoxItem>-- Select Resource --</ComboBoxItem>
-                <ComboBoxItem>Item 2</ComboBoxItem>
-                <ComboBoxItem>Item 3</ComboBoxItem>
-                <ComboBoxItem>Item 4</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
-            <TextBlock Text="{Binding JSFile}" TextWrapping="Wrap"></TextBlock>
-        </StackPanel>
-        <!--<Button Grid.Row="1">Upload</Button>-->
+    <Grid>
+        <Grid Grid.Row="0" Grid.Column="0" x:Name="mainContent" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
+                        toolkit:Themes.UseVsTheme="True"-->
+            <Grid  Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel  Grid.Row="0" Grid.Column="0" Margin="5 0">
+                    <Label VerticalAlignment="Center">Solution:</Label>
+                    <ComboBox  Height="20" Name="SolutionList" SelectedValuePath="UniqueName" DisplayMemberPath="UniqueName" ItemsSource="{Binding solutions}" SelectionChanged="GetResource">
+
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel  Grid.Row="0" Grid.Column="1" Margin="5 0">
+                    <Label VerticalAlignment="Center">Online Resource To Update:</Label>
+                    <ComboBox  Height="20"  ToolTip="Leave Empty to create new resource" Name="WebResourceList" SelectedValuePath="Id" DisplayMemberPath="DisplayName" SelectionChanged="WebResourceList_SelectionChanged" ItemsSource="{Binding WebResource}">
+
+
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel  Grid.Row="0" Grid.Column="0" Margin="5 0">
+                    <Label VerticalAlignment="Center">Name :</Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="0" Text="{Binding WRPrefix}"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding WRName}" Name="WRName" HorizontalAlignment="Stretch"></TextBox>
+                    </Grid>
+                   
+                </StackPanel>
+                <StackPanel  Grid.Row="0" Grid.Column="1" Margin="5 0">
+                    <Label VerticalAlignment="Center">Display Name :</Label>
+                    <TextBox Text="{Binding WRDisplayName}" Name="WRDisplayName"></TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid  Grid.Row="2" Grid.Column="0">
+
+                <StackPanel  Grid.Row="0" Grid.Column="0" Margin="5 0">
+                    <Label VerticalAlignment="Center">Description :</Label>
+                    <TextBox Text="{Binding WRDesc}" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Name="WRDesc"></TextBox>
+
+                </StackPanel>
+
+            </Grid>
+            <!--Text="{Binding JSFile}"-->
+            <Grid  Grid.Row="3" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="{Binding JSFile}" TextWrapping="Wrap" Grid.Column="0"  Margin="5"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+
+                <StackPanel Grid.Column="1"  Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Create/Update" Height="25" Padding="5" Click="UpdateWR"></Button>
+                </StackPanel>
+            </Grid>
+            <!--<Button Grid.Row="1">Upload</Button>-->
+        </Grid>
+        <Grid  Visibility="Hidden" Name="Loader" Grid.Row="0" Grid.Column="0" Background="Transparent">
+            <Image  x:Name="BusyIcon" Height="70" Width="70" gif:AnimationBehavior.SourceUri="../../Resources/Spinner.gif"/>
+
+        </Grid>
     </Grid>
+
 </platform:DialogWindow>

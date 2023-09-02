@@ -61,6 +61,7 @@
     <Compile Include="Models\AttributeMetadata.cs" />
     <Compile Include="Models\CRMService.cs" />
     <Compile Include="Models\EntityMetadata.cs" />
+    <Compile Include="Models\SolutionMetadata.cs" />
     <Compile Include="Models\WebResourceMetedata.cs" />
     <Compile Include="Options\ConnectionParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +94,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Publish.png" />
+    <Resource Include="Resources\Spinner.gif" />
     <Resource Include="Resources\NextDocument.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -141,6 +144,9 @@
       <Version>9.1.1.41</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5232" />
+    <PackageReference Include="XamlAnimatedGif">
+      <Version>2.2.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ToolWindows\Common\" />

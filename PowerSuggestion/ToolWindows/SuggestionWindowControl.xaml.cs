@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using static PowerSuggestion.Helpers.Enums;
+using XamlAnimatedGif;
+
 
 namespace PowerSuggestion
 {
@@ -22,12 +24,33 @@ namespace PowerSuggestion
         public SuggestionWindowControl()
         {
             suggestionActions = new CRMSuggestionActions();
+            
             InitializeComponent();
-            ShowHideOnConnection();
+            AnimationBehavior.SetRepeatBehavior(BusyIcon, System.Windows.Media.Animation.RepeatBehavior.Forever);
+            OnReset();
             this.SizeChanged += OnWindowSizeChanged;
             EntityPanel.CallNext = CallNext;
             AttributePanel.CallNext = CallNextToProperty;
+            EntityPanel.ShowLoader = ShowLoader;
+            EntityPanel.HideLoader = HideLoader;
 
+            AttributePanel.ShowLoader = ShowLoader;
+            AttributePanel.HideLoader = HideLoader;
+
+            SingleAttributePanel.ShowLoader = ShowLoader;
+            SingleAttributePanel.HideLoader = HideLoader;
+
+        }
+
+        public void ShowLoader()
+        {
+            MainContent.Visibility = Visibility.Hidden;
+            Loader.Visibility = Visibility.Visible;
+        }
+        public void HideLoader()
+        {
+            MainContent.Visibility = Visibility.Visible;
+            Loader.Visibility = Visibility.Hidden;
         }
 
         private void CallNext(string LogicalName)
@@ -44,7 +67,7 @@ namespace PowerSuggestion
             ShowAction();
         }
 
-        private void OnReset(object sender, RoutedEventArgs e)
+        private void OnReset(object sender = null, RoutedEventArgs e = null)
         {
             if (ShowHideOnConnection())
             {
