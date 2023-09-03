@@ -42,7 +42,7 @@
             </StackPanel>
             <StackPanel Name="Options" Visibility="Hidden">
 
-                <DataGrid CanUserAddRows="False" ItemsSource="{Binding OptionSet}" IsReadOnly="True" HorizontalAlignment="Stretch"></DataGrid>
+                <DataGrid CanUserAddRows="False" ItemsSource="{Binding OptionSet}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto" MaxHeight="400"></DataGrid>
             </StackPanel>
         </StackPanel>
     </Grid>

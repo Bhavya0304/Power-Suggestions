@@ -100,14 +100,22 @@ namespace PowerSuggestion.ToolWindows.Panels
 
         private async Task GetAllAttributesAsync(string EntityName)
         {
-            _showLoader.DynamicInvoke();
-            List<Models.AttributeMetadata> data = await Task.Run(() =>
+            try
             {
-                return suggestionActions.GetEntityWithAttributes(EntityName);
-            });
-            entitiesData = data;
-            CreateAttributeList(entitiesData);
-            _hideLoader.DynamicInvoke();
+                _showLoader.DynamicInvoke();
+                List<Models.AttributeMetadata> data = await Task.Run(() =>
+                {
+                    return suggestionActions.GetEntityWithAttributes(EntityName);
+                });
+                entitiesData = data;
+                CreateAttributeList(entitiesData);
+                _hideLoader.DynamicInvoke();
+            }
+            catch (Exception ex)
+            {
+
+                VS.MessageBox.ShowErrorAsync("Something Went Wrong!", ex.Message + "\nIf the problem persist try reconnection CRM!");
+            }
 
 
         }

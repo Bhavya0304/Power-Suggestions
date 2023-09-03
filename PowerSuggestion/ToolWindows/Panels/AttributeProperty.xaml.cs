@@ -61,21 +61,29 @@ namespace PowerSuggestion.ToolWindows.Panels
 
         private async Task GetAttributesAsync(string EntityName, string AttributeName)
         {
-            _showLoader.DynamicInvoke();
-            Models.AttributeMetadata data = await Task.Run(() =>
+            try
             {
-                return suggestionActions.GetAttributeMetadata(EntityName, AttributeName);
-            });
-            Convertors.ConvertAttributeModelToViewModel(data, AttributeMetadata);
-            if (AttributeMetadata.OptionSet == null)
-            {
-                Options.Visibility = Visibility.Hidden;
+                _showLoader.DynamicInvoke();
+                Models.AttributeMetadata data = await Task.Run(() =>
+                {
+                    return suggestionActions.GetAttributeMetadata(EntityName, AttributeName);
+                });
+                Convertors.ConvertAttributeModelToViewModel(data, AttributeMetadata);
+                if (AttributeMetadata.OptionSet == null)
+                {
+                    Options.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    Options.Visibility = Visibility.Visible;
+                }
+                _hideLoader.DynamicInvoke();
             }
-            else
+            catch (Exception ex)
             {
-                Options.Visibility = Visibility.Visible;
+
+                VS.MessageBox.ShowErrorAsync("Something Went Wrong!", ex.Message + "\nIf the problem persist try reconnection CRM!");
             }
-            _hideLoader.DynamicInvoke();
         }
 
 

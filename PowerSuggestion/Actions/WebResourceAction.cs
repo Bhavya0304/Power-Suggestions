@@ -222,18 +222,38 @@ namespace PowerSuggestion.Actions
                 };
                 WebResource.LinkCriteria.AddCondition("webresourcetype", ConditionOperator.Equal, (int)WEBRESOURCETYPE.JS);
                 componentsQuery.LinkEntities.Add(WebResource);
-                EntityCollection ComponentsResult = CRMService.Service.RetrieveMultiple(componentsQuery);
-
-
-
-                WRdata.AddRange(ComponentsResult.Entities.ToList().ConvertAll(x => new WebResourceMetedata
+                EntityCollection ComponentsResult;
+                if (SolutionName == "Default")
                 {
-                    Name = x.Contains("wr.name") ? x.GetAttributeValue<AliasedValue>("wr.name").Value.ToString() : "",
-                    DisplayName = x.Contains("wr.displayname") ? x.GetAttributeValue<AliasedValue>("wr.displayname").Value.ToString() : "",
-                    Id = x.Contains("wr.webresourceid") ? (Guid)x.GetAttributeValue<AliasedValue>("wr.webresourceid").Value : Guid.Empty,
-                    Description = x.Contains("wr.description") ? x.GetAttributeValue<AliasedValue>("wr.description").Value.ToString() : ""
-                }));
-                return WRdata;
+                    QueryExpression WebResourceExp = new QueryExpression("webresource");
+                    WebResourceExp.ColumnSet = new ColumnSet("name", "displayname", "webresourceid", "description");
+                    WebResourceExp.Criteria.AddCondition("webresourcetype", ConditionOperator.Equal, (int)WEBRESOURCETYPE.JS);
+                   
+                    ComponentsResult = CRMService.Service.RetrieveMultiple(WebResourceExp);
+                    WRdata.AddRange(ComponentsResult.Entities.ToList().ConvertAll(x => new WebResourceMetedata
+                    {
+                        Name = x.Contains("name") ? x.GetAttributeValue<string>("name").ToString() : "",
+                        DisplayName = x.Contains("displayname") ? x.GetAttributeValue<string>("displayname").ToString() : "",
+                        Id = x.Contains("webresourceid") ? (Guid)x.GetAttributeValue<Guid>("webresourceid") : Guid.Empty,
+                        Description = x.Contains("description") ? x.GetAttributeValue<string>("description").ToString() : ""
+                    }));
+                }
+                else
+                {
+                    ComponentsResult = CRMService.Service.RetrieveMultiple(componentsQuery);
+                    WRdata.AddRange(ComponentsResult.Entities.ToList().ConvertAll(x => new WebResourceMetedata
+                    {
+                        Name = x.Contains("wr.name") ? x.GetAttributeValue<AliasedValue>("wr.name").Value.ToString() : "",
+                        DisplayName = x.Contains("wr.displayname") ? x.GetAttributeValue<AliasedValue>("wr.displayname").Value.ToString() : "",
+                        Id = x.Contains("wr.webresourceid") ? (Guid)x.GetAttributeValue<AliasedValue>("wr.webresourceid").Value : Guid.Empty,
+                        Description = x.Contains("wr.description") ? x.GetAttributeValue<AliasedValue>("wr.description").Value.ToString() : ""
+                    }));
+                }
+
+                    return WRdata;
+
+
+               
             }
             catch (Exception)
             {

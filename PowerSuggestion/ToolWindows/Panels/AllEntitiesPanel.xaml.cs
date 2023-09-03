@@ -101,20 +101,28 @@ namespace PowerSuggestion.ToolWindows.Panels
 
         private async Task GetAllEntitiesAsync()
         {
-            if(_showLoader != null)
+            try
             {
-                _showLoader.DynamicInvoke();
+                if (_showLoader != null)
+                {
+                    _showLoader.DynamicInvoke();
+                }
+
+                List<Models.EntityMetadata> data = await Task.Run(() =>
+                {
+                    return suggestionActions.GetAllEntities();
+                });
+                entitiesData = data;
+                CreateEntityList(entitiesData);
+                if (_hideLoader != null)
+                {
+                    _hideLoader.DynamicInvoke();
+                }
             }
-            
-            List<Models.EntityMetadata> data = await Task.Run(() =>
+            catch (Exception ex)
             {
-                return suggestionActions.GetAllEntities();
-            });
-            entitiesData = data;
-            CreateEntityList(entitiesData);
-            if(_hideLoader != null)
-            {
-                _hideLoader.DynamicInvoke();
+
+                VS.MessageBox.ShowErrorAsync("Something Went Wrong!", ex.Message + "\nIf the problem persist try reconnection CRM!");
             }
             
 

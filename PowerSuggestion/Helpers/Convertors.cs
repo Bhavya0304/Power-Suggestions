@@ -15,6 +15,7 @@ namespace PowerSuggestion.Helpers
             outParam.LogicalName = data.LogicalName;
             outParam.DisplayName = data.DisplayName;
             outParam.SchemaName = data.SchemaName;
+            outParam.AttributeType = data.AttributeType;
             outParam.OptionSet = data.Options;
 
         }

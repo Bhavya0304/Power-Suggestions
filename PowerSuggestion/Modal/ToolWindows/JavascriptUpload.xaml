@@ -7,7 +7,7 @@
                         xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
                         mc:Ignorable="d"
                         Width="600"
-                        Height="285"
+                        Height="300"
                         >
 
     <Grid>
@@ -26,13 +26,21 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel  Grid.Row="0" Grid.Column="0" Margin="5 0">
-                    <Label VerticalAlignment="Center">Solution:</Label>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center">Solution:</Label>
+                        <Label HorizontalAlignment="left" Padding="0" Foreground="Red">*</Label>
+                    </StackPanel>
                     <ComboBox  Height="20" Name="SolutionList" SelectedValuePath="UniqueName" DisplayMemberPath="UniqueName" ItemsSource="{Binding solutions}" SelectionChanged="GetResource">
 
                     </ComboBox>
                 </StackPanel>
                 <StackPanel  Grid.Row="0" Grid.Column="1" Margin="5 0">
-                    <Label VerticalAlignment="Center">Online Resource To Update:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center">Online Resource To Update</Label>
+                        <Label HorizontalAlignment="left" Padding="0" Foreground="Red">*</Label>
+                    </StackPanel>
+
                     <ComboBox  Height="20"  ToolTip="Leave Empty to create new resource" Name="WebResourceList" SelectedValuePath="Id" DisplayMemberPath="DisplayName" SelectionChanged="WebResourceList_SelectionChanged" ItemsSource="{Binding WebResource}">
 
 
@@ -45,19 +53,27 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel  Grid.Row="0" Grid.Column="0" Margin="5 0">
-                    <Label VerticalAlignment="Center">Name :</Label>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center">Name :</Label>
+                        <Label HorizontalAlignment="left" Padding="0" Foreground="Red">*</Label>
+                    </StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="0" Text="{Binding WRPrefix}"></TextBlock>
+                        <TextBlock HorizontalAlignment="Left" FontWeight="Bold" Grid.Column="0" Text="{Binding WRPrefix}"></TextBlock>
                         <TextBox Grid.Column="1" Text="{Binding WRName}" Name="WRName" HorizontalAlignment="Stretch"></TextBox>
                     </Grid>
-                   
+
                 </StackPanel>
                 <StackPanel  Grid.Row="0" Grid.Column="1" Margin="5 0">
-                    <Label VerticalAlignment="Center">Display Name :</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center">Display Name</Label>
+                        <Label HorizontalAlignment="left" Padding="0" Foreground="Red">*</Label>
+                    </StackPanel>
+
                     <TextBox Text="{Binding WRDisplayName}" Name="WRDisplayName"></TextBox>
                 </StackPanel>
             </Grid>
@@ -65,6 +81,7 @@
 
                 <StackPanel  Grid.Row="0" Grid.Column="0" Margin="5 0">
                     <Label VerticalAlignment="Center">Description :</Label>
+
                     <TextBox Text="{Binding WRDesc}" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Name="WRDesc"></TextBox>
 
                 </StackPanel>

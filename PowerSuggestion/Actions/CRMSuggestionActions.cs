@@ -33,10 +33,10 @@ namespace PowerSuggestion.Actions
                 }
                 return entityMetadata;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return null;
+                throw ex;
             }
         }
 
@@ -64,10 +64,10 @@ namespace PowerSuggestion.Actions
                 }
                 return attributes;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return null;
+                throw ex;
             }
         }
 
@@ -101,11 +101,7 @@ namespace PowerSuggestion.Actions
 
                 return Attribute;
             }
-            catch (Exception)
-            {
-
-                return null;
-            }
+            catch (Exception ex) { throw ex; }
 
         }
 

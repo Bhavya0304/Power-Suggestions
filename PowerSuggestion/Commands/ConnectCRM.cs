@@ -9,6 +9,7 @@ namespace PowerSuggestion
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
             //Getting Connection String
+            VS.StatusBar.ShowMessageAsync("Trying to connect to CRM Please Wait");
             ConnectionParameters options = await ConnectionParameters.GetLiveInstanceAsync();
             if (options != null && !string.IsNullOrEmpty(options.Username) && !string.IsNullOrEmpty(options.Password) && !string.IsNullOrEmpty(options.EnviromentUrl))
             {

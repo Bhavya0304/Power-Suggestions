@@ -31,11 +31,19 @@ namespace PowerSuggestion.MenuItem
                 filePath = projectItem.Properties.Item("FullPath").Value.ToString();
                 if (js.viewModel != null)
                 {
-                    js.viewModel.JSFile = filePath;
-                    js.viewModel.JSFilepath = filePath;
-                    js.viewModel.JSFileName = projectItem.Name;
-                    //js.ShowDialogAsync();
-                    js.Show();
+                    if(new FileInfo(filePath).Extension.ToLower() == ".js")
+                    {
+                        js.viewModel.JSFile = filePath;
+                        js.viewModel.JSFilepath = filePath;
+                        js.viewModel.JSFileName = projectItem.Name;
+
+                        js.Show();
+                    }
+                    else
+                    {
+                        VS.MessageBox.ShowError("Only JS File Supprted!", "Only file are supported for now!");
+                    }
+                    
                 }
 
             }

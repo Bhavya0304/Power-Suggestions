@@ -87,11 +87,30 @@ namespace PowerSuggestion.Modal
             viewModel.WRPrefix = Solution.Prefix;
             GetAllWRAsync(Solution.UniqueName);
         }
+
+        public bool ValidateForm()
+        {
+            string Name = WRName.Text;
+            string DisplayName = WRDisplayName.Text;
+            string SolutionName = (string)SolutionList.SelectedValue;
+
+            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(DisplayName) || string.IsNullOrEmpty(SolutionName))
+            {
+                return false;
+            }
+
+            return true;
+        }
         public async void UpdateWR(object sender = null, RoutedEventArgs e = null)
         {
 
             try
             {
+                if (!ValidateForm())
+                {
+                    VS.MessageBox.ShowError("Please Fill all required Fields first!");
+                    return;
+                }
                 Guid WRId = WebResourceList.SelectedValue != null ? (Guid)WebResourceList.SelectedValue : Guid.Empty;
                 this.Close();
                 await VS.StatusBar.ShowProgressAsync("Uploading Web Resource", 1, 4);
@@ -112,7 +131,8 @@ namespace PowerSuggestion.Modal
                 {
                     return WebResourceAction.PublishFile(Status);
                 });
-                await VS.StatusBar.ShowProgressAsync("SuccessFully Published", 4, 4);
+                await VS.StatusBar.ShowProgressAsync("Finishing...", 4, 4);
+                await VS.StatusBar.ShowMessageAsync("Published Successfully");
 
             }
             catch (Exception ex)
