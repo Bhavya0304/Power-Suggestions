@@ -24,12 +24,13 @@ namespace PowerSuggestion
         public SuggestionWindowControl()
         {
             suggestionActions = new CRMSuggestionActions();
-            
+
             InitializeComponent();
             AnimationBehavior.SetRepeatBehavior(BusyIcon, System.Windows.Media.Animation.RepeatBehavior.Forever);
             OnReset();
             this.SizeChanged += OnWindowSizeChanged;
             EntityPanel.CallNext = CallNext;
+            EntityPanel.CallNextEntityPanel = CallNextEntityPanel;
             AttributePanel.CallNext = CallNextToProperty;
             EntityPanel.ShowLoader = ShowLoader;
             EntityPanel.HideLoader = HideLoader;
@@ -39,6 +40,9 @@ namespace PowerSuggestion
 
             SingleAttributePanel.ShowLoader = ShowLoader;
             SingleAttributePanel.HideLoader = HideLoader;
+
+            SingleEntityPanel.ShowLoader = ShowLoader;
+            SingleEntityPanel.HideLoader = HideLoader;
 
         }
 
@@ -57,6 +61,13 @@ namespace PowerSuggestion
         {
             AttributePanel.CurrentEntityName = LogicalName;
             PageControl = CurrentPage.AllAttributes;
+            ShowAction();
+        }
+
+        private void CallNextEntityPanel(string LogicalName)
+        {
+            SingleEntityPanel.CurrentEntityName = LogicalName;
+            PageControl = CurrentPage.SingleEntity;
             ShowAction();
         }
         private void CallNextToProperty(string LogicalName, string EnitityName)
@@ -87,6 +98,12 @@ namespace PowerSuggestion
                 PageControl = CurrentPage.AllAttributes;
                 ShowAction();
             }
+
+            if (PageControl == CurrentPage.SingleEntity)
+            {
+                PageControl = CurrentPage.AllEntities;
+                ShowAction();
+            }
         }
         private void ShowAction()
         {
@@ -95,6 +112,8 @@ namespace PowerSuggestion
                 EntityPanel.Visibility = Visibility.Visible;
                 AttributePanel.Visibility = Visibility.Hidden;
                 SingleAttributePanel.Visibility = Visibility.Hidden;
+                SingleEntityPanel.Visibility = Visibility.Hidden;
+
 
                 EntityPanel.OnReset();
             }
@@ -103,6 +122,8 @@ namespace PowerSuggestion
                 EntityPanel.Visibility = Visibility.Hidden;
                 AttributePanel.Visibility = Visibility.Visible;
                 SingleAttributePanel.Visibility = Visibility.Hidden;
+                SingleEntityPanel.Visibility = Visibility.Hidden;
+
 
                 AttributePanel.OnReset();
             }
@@ -111,7 +132,17 @@ namespace PowerSuggestion
                 EntityPanel.Visibility = Visibility.Hidden;
                 AttributePanel.Visibility = Visibility.Hidden;
                 SingleAttributePanel.Visibility = Visibility.Visible;
+                SingleEntityPanel.Visibility = Visibility.Hidden;
+
                 SingleAttributePanel.OnReset();
+            }
+            else if (PageControl == CurrentPage.SingleEntity)
+            {
+                EntityPanel.Visibility = Visibility.Hidden;
+                AttributePanel.Visibility = Visibility.Hidden;
+                SingleAttributePanel.Visibility = Visibility.Hidden;
+                SingleEntityPanel.Visibility = Visibility.Visible;
+                SingleEntityPanel.OnReset();
             }
         }
         private bool ShowHideOnConnection()

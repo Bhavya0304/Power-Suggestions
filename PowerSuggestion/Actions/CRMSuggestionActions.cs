@@ -105,6 +105,29 @@ namespace PowerSuggestion.Actions
 
         }
 
+        public Models.EntityMetadata GetEntityMetadata(string EntityLogicalName)
+        {
+            try
+            {
+                RetrieveEntityRequest entityRequest = new RetrieveEntityRequest
+                {
+                    LogicalName = EntityLogicalName,
+                    RetrieveAsIfPublished = false
+                };
+                RetrieveEntityResponse response = CRMService.Service.Execute(entityRequest) as RetrieveEntityResponse;
 
+                Models.EntityMetadata Entity = new Models.EntityMetadata()
+                {
+                    DisplayName = response.EntityMetadata.DisplayName.UserLocalizedLabel == null ? response.EntityMetadata.LogicalName.ToString() : response.EntityMetadata.DisplayName.UserLocalizedLabel.Label.ToString(),
+                    LogicalName = response.EntityMetadata.LogicalName,
+                    SchemaName = response.EntityMetadata.SchemaName,
+                    PluralName = response.EntityMetadata.LogicalCollectionName,
+                };
+
+                return Entity;
+            }
+            catch (Exception ex) { throw ex; }
+
+        }
     }
 }

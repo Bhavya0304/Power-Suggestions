@@ -79,6 +79,7 @@
                     <Panels:AllEntitiesPanel x:Name="EntityPanel" VerticalAlignment="Top" Grid.Row="0"></Panels:AllEntitiesPanel>
                     <Panels:AllAttributesPanel x:Name="AttributePanel" VerticalAlignment="Top" Grid.Row="0"></Panels:AllAttributesPanel>
                     <Panels:AttributeProperty x:Name="SingleAttributePanel" VerticalAlignment="Top" Grid.Row="0"></Panels:AttributeProperty>
+                    <Panels:EntityProperty x:Name="SingleEntityPanel" VerticalAlignment="Top" Grid.Row="0"></Panels:EntityProperty>
                 </Grid>
 
             </StackPanel>

@@ -26,6 +26,7 @@ namespace PowerSuggestion.ToolWindows.Panels
         private CRMSuggestionActions suggestionActions;
         private List<Models.EntityMetadata> entitiesData;
         private Delegate _CallNext;
+        private Delegate _CallNextEntityPanel;
         private Delegate _showLoader;
         private Delegate _hideLoader;
         public Delegate ShowLoader
@@ -37,6 +38,11 @@ namespace PowerSuggestion.ToolWindows.Panels
         {
             set { _hideLoader = value; }
         }
+        public Delegate CallNextEntityPanel
+        {
+            set { _CallNextEntityPanel = value; }
+        }
+
         public Delegate CallNext
         {
             set { _CallNext = value; }
@@ -99,6 +105,20 @@ namespace PowerSuggestion.ToolWindows.Panels
             _CallNext.DynamicInvoke(args);
         }
 
+        public void ShowEntity(object sender = null, RoutedEventArgs e = null)
+        {
+            string LogicalName = "";
+            if (e.Source as Button != null)
+            {
+                LogicalName = (e.Source as Button).Tag.ToString();
+            }
+
+
+            object[] args = new object[1];
+            args[0] = LogicalName;
+            _CallNextEntityPanel.DynamicInvoke(args);
+        }
+
         private async Task GetAllEntitiesAsync()
         {
             try
@@ -124,7 +144,7 @@ namespace PowerSuggestion.ToolWindows.Panels
 
                 VS.MessageBox.ShowErrorAsync("Something Went Wrong!", ex.Message + "\nIf the problem persist try reconnection CRM!");
             }
-            
+
 
 
         }

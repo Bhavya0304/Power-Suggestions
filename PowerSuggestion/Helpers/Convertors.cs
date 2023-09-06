@@ -19,5 +19,14 @@ namespace PowerSuggestion.Helpers
             outParam.OptionSet = data.Options;
 
         }
+
+        public static void ConvertEntityModelToViewModel(EntityMetadata data, EntityMetadataModel outParam)
+        {
+            outParam.LogicalName = data.LogicalName;
+            outParam.DisplayName = data.DisplayName;
+            outParam.SchemaName = data.SchemaName;
+            outParam.PluralName = data.PluralName;
+
+        }
     }
 }

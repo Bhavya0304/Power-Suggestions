@@ -10,6 +10,8 @@ namespace PowerSuggestion.Models
     {
         public string LogicalName { get; set; }
         public string DisplayName { get; set; }
+        public string SchemaName { get; set; }
+        public string PluralName { get; set; }
         public List<EntityAttributes> Attributes { get; set; }
         public Guid Id { get; set; }
 

@@ -8,7 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel x:Name="AllEntity" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="AllEntity" Grid.Column="0" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <Button Height="20" Width="20" VerticalAlignment="Center" Margin="5 10" Background="Transparent" BorderThickness="0" Click="OnReset">
                     <StackPanel>
@@ -35,7 +38,7 @@
                 </ListView.ItemContainerStyle>
                 <ListView.Template>
                     <ControlTemplate>
-                        <ScrollViewer Height="500" VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer Height="500" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                             <ItemsPresenter></ItemsPresenter>
                         </ScrollViewer>
                     </ControlTemplate>
@@ -49,7 +52,7 @@
                                     <ColumnDefinition Width="0.7*"></ColumnDefinition>
                                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding DisplayName}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0">
+                                <TextBlock Text="{Binding DisplayName}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0">
 
                                 </TextBlock>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -73,10 +76,10 @@
                                             <Image Source="../../Resources/Copy.png" Height="20"  />
                                         </StackPanel>
                                     </Button>
-                                    <Button Height="20" Tag="{Binding LogicalName}"  VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="ShowAttributes">
+                                    <Button Height="20" Tag="{Binding LogicalName}"  VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="ShowEntity">
                                         <Button.ToolTip>
                                             <ToolTip>
-                                                Go Inside
+                                                Open Info
                                             </ToolTip>
                                         </Button.ToolTip>
                                         <StackPanel>
@@ -86,7 +89,6 @@
                                 </StackPanel>
 
                             </Grid>
-
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

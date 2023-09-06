@@ -81,11 +81,15 @@
     <Compile Include="ToolWindows\Panels\AttributeProperty.xaml.cs">
       <DependentUpon>AttributeProperty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToolWindows\Panels\EntityProperty.xaml.cs">
+      <DependentUpon>EntityProperty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ToolWindows\SuggestionWindow.cs" />
     <Compile Include="ToolWindows\SuggestionWindowControl.xaml.cs">
       <DependentUpon>SuggestionWindowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AttributeMetadataModel.cs" />
+    <Compile Include="ViewModels\EntityMetadataModel.cs" />
     <Compile Include="ViewModels\WebResourceModel.cs" />
     <Compile Include="VSCommandTable.cs">
       <AutoGen>True</AutoGen>
@@ -165,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToolWindows\Panels\AttributeProperty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolWindows\Panels\EntityProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
