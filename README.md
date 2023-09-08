@@ -11,6 +11,7 @@ A Complete VS Package Extension For Microsoft Dynamics 365 Developer.
   <li>OptionSets</li>
   <li>Spinner/Loader For Running Tasks</li>
   <li>Web Resource Upload directly from Visual Studio (With ProgressBar)</li>
+  <li>Entity Property Page (Include Plural Name)</li>
 </ul>
 
 
@@ -19,4 +20,5 @@ A Complete VS Package Extension For Microsoft Dynamics 365 Developer.
   <li>Design Fix (Theme Independent)</li>
   <li>Javascript XRM Suggestions</li>
   <li>Create Enum from optionSet</li>
+  <li>Copy To Clipboard In Single Property Pages</li>
 </ul>
