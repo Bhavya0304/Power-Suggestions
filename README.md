@@ -16,10 +16,7 @@ A Complete VS Package Extension For Microsoft Dynamics 365 Developer.
 
 ## To-DO
 <ul>
-  <li>Design Fix</li>
-  <li>Web Resource Upload (Validation)</li>
-  <li>Entity Property Page (Include Plural Name)</li>
+  <li>Design Fix (Theme Independent)</li>
   <li>Javascript XRM Suggestions</li>
-  <li>LogicalCollectionName Plural Name in Info</li>
   <li>Create Enum from optionSet</li>
 </ul>
