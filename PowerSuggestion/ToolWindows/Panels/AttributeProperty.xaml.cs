@@ -56,7 +56,26 @@ namespace PowerSuggestion.ToolWindows.Panels
             GetAttributesAsync(CurrentEntityName, CurrentAttributeName);
 
         }
+        public void CopyName(object sender = null, RoutedEventArgs e = null)
+        {
+            string LogicalName = (e.Source as Button).Tag.ToString();
+            Clipboard.SetText(LogicalName);
+        }
 
+        public async void InsertName(object sender = null, RoutedEventArgs e = null)
+        {
+            string LogicalName = (e.Source as Button).Tag.ToString();
+            var docView = await VS.Documents.GetActiveDocumentViewAsync();
+            if (docView == null)
+            {
+                return;
+            }
+            var selectionText = docView?.TextView.Selection.SelectedSpans.FirstOrDefault();
+            if (selectionText.HasValue)
+            {
+                docView?.TextBuffer.Replace(selectionText.Value, LogicalName);
+            }
+        }
 
 
         private async Task GetAttributesAsync(string EntityName, string AttributeName)
@@ -83,6 +102,7 @@ namespace PowerSuggestion.ToolWindows.Panels
             {
 
                 VS.MessageBox.ShowErrorAsync("Something Went Wrong!", ex.Message + "\nIf the problem persist try reconnection CRM!");
+                _hideLoader.DynamicInvoke();
             }
         }
 

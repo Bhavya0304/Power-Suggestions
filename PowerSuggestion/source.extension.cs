@@ -11,7 +11,7 @@ namespace PowerSuggestion
         public const string Name = "PowerSuggestions";
         public const string Description = @"Power Suggestions is a CRM Tool Extension for Visual Studio that Provides with Entity Name and Entity Field Suggestions for user. From now on don't keep power apps aside to see entity logical name or entity field type.";
         public const string Language = "en-US";
-        public const string Version = "1.0";
+        public const string Version = "1.1";
         public const string Author = "Bhavya Joshi";
         public const string Tags = "";
     }

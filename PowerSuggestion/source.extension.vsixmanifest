@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="PowerSuggestion.32701f3f-79cd-4a5b-9599-3168b136d60d" Version="1.0" Language="en-US" Publisher="Bhavya Joshi" />
+        <Identity Id="PowerSuggestion.32701f3f-79cd-4a5b-9599-3168b136d60d" Version="1.1" Language="en-US" Publisher="Bhavya Joshi" />
         <DisplayName>PowerSuggestions</DisplayName>
         <Description xml:space="preserve">Power Suggestions is a CRM Tool Extension for Visual Studio that Provides with Entity Name and Entity Field Suggestions for user. From now on don't keep power apps aside to see entity logical name or entity field type.</Description>
+        <ReleaseNotes>ReleaseNotes\v1.1.txt</ReleaseNotes>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
     </Metadata>

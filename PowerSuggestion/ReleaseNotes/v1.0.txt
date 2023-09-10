@@ -1,0 +1,7 @@
+﻿First Version Of App Includes
+
+-> All Entites Search
+-> All Attributes Search
+-> Search Bar
+-> Direct JS Web Resource Upload and Publish
+-> Single Attribute Panel with Option Sets Display

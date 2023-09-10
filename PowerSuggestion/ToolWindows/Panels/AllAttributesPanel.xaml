@@ -30,6 +30,7 @@
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         <Setter Property="Tag" Value="{Binding LogicalName}"/>
+                        <Setter Property="ToolTip" Value="{Binding LogicalName}"></Setter>
                         <EventSetter Event="MouseDoubleClick" Handler="GoNext"></EventSetter>
                     </Style>
                 </ListView.ItemContainerStyle>

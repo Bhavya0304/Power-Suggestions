@@ -47,7 +47,26 @@ namespace PowerSuggestion.ToolWindows.Panels
             EntityMetadata = new EntityMetadataModel();
             DataContext = EntityMetadata;
         }
+        public void CopyName(object sender = null, RoutedEventArgs e = null)
+        {
+            string LogicalName = (e.Source as Button).Tag.ToString();
+            Clipboard.SetText(LogicalName);
+        }
 
+        public async void InsertName(object sender = null, RoutedEventArgs e = null)
+        {
+            string LogicalName = (e.Source as Button).Tag.ToString();
+            var docView = await VS.Documents.GetActiveDocumentViewAsync();
+            if (docView == null)
+            {
+                return;
+            }
+            var selectionText = docView?.TextView.Selection.SelectedSpans.FirstOrDefault();
+            if (selectionText.HasValue)
+            {
+                docView?.TextBuffer.Replace(selectionText.Value, LogicalName);
+            }
+        }
 
         public void OnReset(object sender = null, RoutedEventArgs e = null)
         {
@@ -71,6 +90,7 @@ namespace PowerSuggestion.ToolWindows.Panels
             {
 
                 VS.MessageBox.ShowErrorAsync("Something Went Wrong!", ex.Message + "\nIf the problem persist try reconnection CRM!");
+                _hideLoader.DynamicInvoke();
             }
         }
     }

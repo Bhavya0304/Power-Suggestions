@@ -1,0 +1,5 @@
+﻿New Release Version 1.1
+
+-> Bug Fixes in Search bar
+-> Single Entity Panel with Copy To Clipboard Functionality
+-> Minor Bug Fixes

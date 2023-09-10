@@ -117,6 +117,11 @@
     <Resource Include="Resources\Copy.png" />
     <Resource Include="Resources\AddClause.png" />
     <Resource Include="Resources\Backwards.png" />
+    <Content Include="ReleaseNotes\v1.0.txt" />
+    <Content Include="ReleaseNotes\v1.1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

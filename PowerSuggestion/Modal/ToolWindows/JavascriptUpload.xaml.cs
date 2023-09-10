@@ -138,6 +138,7 @@ namespace PowerSuggestion.Modal
             catch (Exception ex)
             {
                 await VS.MessageBox.ShowErrorAsync("Error in Uploading Web Resource", ex.Message);
+
             }
 
 

@@ -89,7 +89,7 @@ namespace PowerSuggestion.Actions
                     LogicalName = response.AttributeMetadata.LogicalName,
                     AttributeType = response.AttributeMetadata.AttributeType.ToString(),
                     SchemaName = response.AttributeMetadata.SchemaName,
-                    Options = attributeData != null ? (from option in attributeData.OptionSet.Options
+                    Options = attributeData != null && attributeData.OptionSet != null ? (from option in attributeData.OptionSet.Options
                                                        select new OptionSet()
                                                        {
                                                            OptionSetValue = option.Value.ToString(),

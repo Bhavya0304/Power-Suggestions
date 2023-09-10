@@ -34,7 +34,6 @@ namespace PowerSuggestion
             AttributePanel.CallNext = CallNextToProperty;
             EntityPanel.ShowLoader = ShowLoader;
             EntityPanel.HideLoader = HideLoader;
-
             AttributePanel.ShowLoader = ShowLoader;
             AttributePanel.HideLoader = HideLoader;
 

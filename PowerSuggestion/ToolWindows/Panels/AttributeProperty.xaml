@@ -20,21 +20,115 @@
                 </HeaderedContentControl>
 
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
 
-                <Label VerticalAlignment="Center">Attribute Name :</Label>
-                <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label VerticalAlignment="Center">Attribute Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"></TextBlock>
+                </StackPanel>
 
-                <Label VerticalAlignment="Center">Logical Name :</Label>
-                <TextBlock VerticalAlignment="Center" Text="{Binding LogicalName}"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
 
-                <Label VerticalAlignment="Center">Schema Name :</Label>
-                <TextBlock VerticalAlignment="Center" Text="{Binding SchemaName}"></TextBlock>
-            </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Height="20" Tag="{Binding DisplayName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Insert Logical Name
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <StackPanel >
+                            <Image Source="../../Resources/AddClause.png" Height="20"  />
+                        </StackPanel>
+                    </Button>
+                    <Button Height="20" Tag="{Binding DisplayName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Copy Logical Name
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <StackPanel >
+                            <Image Source="../../Resources/Copy.png" Height="20" Width="20" StretchDirection="UpOnly" HorizontalAlignment="Right"  />
+                        </StackPanel>
+                    </Button>
+
+
+                </StackPanel>
+
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label VerticalAlignment="Center">Logical Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding LogicalName}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Insert Logical Name
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <StackPanel >
+                            <Image Source="../../Resources/AddClause.png" Height="20"  />
+                        </StackPanel>
+                    </Button>
+                    <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Copy Logical Name
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <StackPanel >
+                            <Image Source="../../Resources/Copy.png" Height="20" Width="20"  />
+                        </StackPanel>
+                    </Button>
+
+
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label VerticalAlignment="Center">Schema Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding SchemaName}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Height="20" Tag="{Binding SchemaName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Insert Logical Name
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <StackPanel >
+                            <Image Source="../../Resources/AddClause.png" Height="20"  />
+                        </StackPanel>
+                    </Button>
+                    <Button Height="20" Tag="{Binding SchemaName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Copy Logical Name
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <StackPanel >
+                            <Image Source="../../Resources/Copy.png" Height="20" Width="20"  />
+                        </StackPanel>
+                    </Button>
+
+
+                </StackPanel>
+            </Grid>
+
             <StackPanel Orientation="Horizontal">
 
                 <Label VerticalAlignment="Center">Attribute Type:</Label>

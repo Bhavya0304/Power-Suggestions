@@ -68,8 +68,8 @@ namespace PowerSuggestion.ToolWindows.Panels
         public void Search(object sender = null, RoutedEventArgs e = null)
         {
             List<Models.AttributeMetadata> newList = new List<Models.AttributeMetadata>();
-            newList.AddRange(entitiesData.Where(x => x.DisplayName.Contains(SearchBox.Text)).ToList());
-            newList.AddRange(entitiesData.Where(x => x.LogicalName.Contains(SearchBox.Text)).ToList());
+            newList.AddRange(entitiesData.Where(x => x.DisplayName.ToLower().Contains(SearchBox.Text.ToLower())).ToList());
+            newList.AddRange(entitiesData.Where(x => x.LogicalName.ToLower().Contains(SearchBox.Text.ToLower())).ToList());
 
             CreateAttributeList(newList.Distinct().ToList());
         }
@@ -115,6 +115,7 @@ namespace PowerSuggestion.ToolWindows.Panels
             {
 
                 VS.MessageBox.ShowErrorAsync("Something Went Wrong!", ex.Message + "\nIf the problem persist try reconnection CRM!");
+                _hideLoader.DynamicInvoke();
             }
 
 

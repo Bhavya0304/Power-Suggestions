@@ -13,8 +13,8 @@
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="AllEntity" Grid.Column="0" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" VerticalAlignment="Center" Margin="5 10" Background="Transparent" BorderThickness="0" Click="OnReset">
-                    <StackPanel>
+                <Button Height="25" Width="20" VerticalAlignment="Center" Margin="5 10" Background="Transparent" BorderThickness="0" Click="OnReset">
+                    <StackPanel Height="20" Width="20">
                         <Image Source="../../Resources/Refresh.png"   />
                     </StackPanel>
                 </Button>
@@ -29,10 +29,12 @@
                 </TextBox>
             </StackPanel>
             <ListView x:Name="EntitiesListView">
+
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         <Setter Property="Tag" Value="{Binding LogicalName}"/>
+                        <Setter Property="ToolTip" Value="{Binding LogicalName}"></Setter>
                         <EventSetter Event="MouseDoubleClick" Handler="ShowAttributes"></EventSetter>
                     </Style>
                 </ListView.ItemContainerStyle>
@@ -55,18 +57,18 @@
                                 <TextBlock Text="{Binding DisplayName}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0">
 
                                 </TextBlock>
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
+                                <StackPanel  Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Background="Transparent" Height="25"  Tag="{Binding LogicalName}" MinWidth="0" VerticalAlignment="Center"  BorderThickness="0" Click="InsertName">
                                         <Button.ToolTip>
                                             <ToolTip>
                                                 Insert Logical Name
                                             </ToolTip>
                                         </Button.ToolTip>
                                         <StackPanel >
-                                            <Image Source="../../Resources/AddClause.png" Height="20"  />
+                                            <Image Source="../../Resources/AddClause.png" Height="20"   />
                                         </StackPanel>
                                     </Button>
-                                    <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
+                                    <Button MinWidth="0" Height="25" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
                                         <Button.ToolTip>
                                             <ToolTip>
                                                 Copy Logical Name
@@ -76,7 +78,7 @@
                                             <Image Source="../../Resources/Copy.png" Height="20"  />
                                         </StackPanel>
                                     </Button>
-                                    <Button Height="20" Tag="{Binding LogicalName}"  VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="ShowEntity">
+                                    <Button MinWidth="0" Height="25" Tag="{Binding LogicalName}"  VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="ShowEntity">
                                         <Button.ToolTip>
                                             <ToolTip>
                                                 Open Info
@@ -92,44 +94,7 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <!--<ListViewItem>
 
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.9*"></ColumnDefinition>
-                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="data 1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0">
-
-                        </TextBlock>
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-
-                            <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
-                                <Button.ToolTip>
-                                    <ToolTip>
-                                        Copy Logical Name
-                                    </ToolTip>
-                                </Button.ToolTip>
-                                <StackPanel >
-                                    <Image Source="../../Resources/Copy.png" Width="20" />
-                                </StackPanel>
-                            </Button>
-                            <Button Height="20" Tag="{Binding LogicalName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="ShowAttributes">
-                                <Button.ToolTip>
-                                    <ToolTip>
-                                        Go Inside
-                                    </ToolTip>
-                                </Button.ToolTip>
-                                <StackPanel>
-                                    <Image Source="../../Resources/NextDocument.png" Width="20" />
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                    </Grid>
-
-
-                </ListViewItem>-->
             </ListView>
 
 
