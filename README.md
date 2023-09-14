@@ -20,5 +20,6 @@ A Complete VS Package Extension For Microsoft Dynamics 365 Developer.
   <li>Design Fix (Theme Independent)</li>
   <li>Javascript XRM Suggestions</li>
   <li>Create Enum from optionSet</li>
-  <li>Copy To Clipboard In Single Property Pages</li>
+  <li>Visual Studio 2019 Support</li>
+  <li>FAQ/ContactUs/AboutUs Page</li>
 </ul>
