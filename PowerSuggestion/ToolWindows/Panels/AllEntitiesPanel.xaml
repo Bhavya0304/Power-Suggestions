@@ -5,12 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PowerSuggestion.ToolWindows.Panels"
              xmlns:Theme="clr-namespace:PowerSuggestion.Helpers"
+             xmlns:vs_shell="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" 
+             d:DesignWidth="800"
+            
+                >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <StackPanel x:Name="AllEntity" Grid.Column="0" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <Button Height="25" Width="20" VerticalAlignment="Center" Margin="5 10" Background="Transparent" BorderThickness="0" Click="OnReset">
@@ -18,13 +26,13 @@
                         <Image Source="../../Resources/Refresh.png"   />
                     </StackPanel>
                 </Button>
-                <HeaderedContentControl FontWeight="DemiBold" VerticalAlignment="Center">
+                <HeaderedContentControl FontWeight="DemiBold" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">
                     All Entities
                 </HeaderedContentControl>
 
             </StackPanel>
             <StackPanel>
-                <TextBox x:Name="SearchBox" TextChanged="Search">
+                <TextBox x:Name="SearchBox" TextChanged="Search" Text="Search" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Background="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowBackgroundBrushKey}}" >
 
                 </TextBox>
             </StackPanel>
@@ -54,7 +62,7 @@
                                     <ColumnDefinition Width="0.7*"></ColumnDefinition>
                                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding DisplayName}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0">
+                                <TextBlock Text="{Binding DisplayName}" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0">
 
                                 </TextBlock>
                                 <StackPanel  Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">

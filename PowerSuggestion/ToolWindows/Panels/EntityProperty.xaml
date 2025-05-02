@@ -4,17 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PowerSuggestion.ToolWindows.Panels"
+              xmlns:vs_shell="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel x:Name="EntityPropertyPanel" Margin="10">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Background="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowBackgroundBrushKey}}">
                 <Button  VerticalAlignment="Center" Margin="5 10" Background="Transparent" BorderThickness="0" Click="OnReset">
                     <StackPanel>
                         <Image Source="../../Resources/Refresh.png" Height="20" Width="20"  />
                     </StackPanel>
                 </Button>
-                <HeaderedContentControl FontWeight="DemiBold" VerticalAlignment="Center" Content="Entity Info">
+                <HeaderedContentControl Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" FontWeight="DemiBold" VerticalAlignment="Center" Content="Entity Info">
 
                 </HeaderedContentControl>
 
@@ -25,8 +26,8 @@
                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label VerticalAlignment="Center">Entity Name :</Label>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"></TextBlock>
+                    <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Entity Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Text="{Binding DisplayName}"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
@@ -62,8 +63,8 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label VerticalAlignment="Center">Logical Name :</Label>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding LogicalName}"></TextBlock>
+                    <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Logical Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Text="{Binding LogicalName}"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
@@ -98,8 +99,8 @@
                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label VerticalAlignment="Center">Schema Name :</Label>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding SchemaName}"></TextBlock>
+                    <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Schema Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Text="{Binding SchemaName}"></TextBlock>
 
                 </StackPanel>
 
@@ -135,8 +136,8 @@
                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label VerticalAlignment="Center">Entity Plural Name:</Label>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding PluralName}"></TextBlock>
+                    <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Entity Plural Name:</Label>
+                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Text="{Binding PluralName}"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">

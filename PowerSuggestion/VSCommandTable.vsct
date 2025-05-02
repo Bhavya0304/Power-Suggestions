@@ -34,7 +34,7 @@
 				<Icon guid="ImageCatalogGuid" id="ConnectToEnvironment" />
 				<CommandFlag>IconIsMoniker</CommandFlag>
 				<Strings>
-					<ButtonText>Connect To CRM</ButtonText>
+					<ButtonText>Connect Dataverse</ButtonText>
 					<LocCanonicalName>.PowerSuggestion.ConnectCRM</LocCanonicalName>
 				</Strings>
 			</Button>
@@ -43,7 +43,7 @@
 				<Icon guid="ImageCatalogGuid" id="DynamicsCRM" />
 				<CommandFlag>IconIsMoniker</CommandFlag>
 				<Strings>
-					<ButtonText>Open CRM Suggestions ToolBox</ButtonText>
+					<ButtonText>Entity ToolBox</ButtonText>
 					<LocCanonicalName>.PowerSuggestion.OpenSuggestionWindow</LocCanonicalName>
 				</Strings>
 			</Button>

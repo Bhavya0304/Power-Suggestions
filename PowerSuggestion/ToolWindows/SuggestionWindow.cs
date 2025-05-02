@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Imaging;
+using PowerSuggestion.Helpers;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,7 +9,11 @@ namespace PowerSuggestion
 {
     public class SuggestionWindow : BaseToolWindow<SuggestionWindow>
     {
-        public override string GetTitle(int toolWindowId) => "CRM Suggestion Box";
+
+        public SuggestionWindow() {
+
+        }
+        public override string GetTitle(int toolWindowId) => "Entity Tool Box";
 
         public override Type PaneType => typeof(Pane);
 

@@ -52,6 +52,7 @@
     <Compile Include="Commands\OpenSuggestionWindow.cs" />
     <Compile Include="Helpers\Convertors.cs" />
     <Compile Include="Helpers\Enums.cs" />
+    <Compile Include="Helpers\ThemeV2.cs" />
     <Compile Include="Helpers\ViewModel.cs" />
     <Compile Include="Helpers\VsTheme.cs" />
     <Compile Include="Commands\PublishWebResource.cs" />
@@ -140,6 +141,7 @@
     <Reference Include="System" />
     <Reference Include="System.Design" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>

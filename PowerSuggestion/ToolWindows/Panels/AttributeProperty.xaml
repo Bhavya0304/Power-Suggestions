@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PowerSuggestion.ToolWindows.Panels"
              xmlns:Theme="clr-namespace:PowerSuggestion.Helpers"
+              xmlns:vs_shell="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel x:Name="AttributePropertyPanel" Margin="10">
+        <StackPanel x:Name="AttributePropertyPanel" Margin="10" Background="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowBackgroundBrushKey}}">
             <StackPanel Orientation="Horizontal">
                 <Button VerticalAlignment="Center" Margin="5 10" Background="Transparent" BorderThickness="0" Click="OnReset">
                     <StackPanel>
@@ -27,15 +28,15 @@
                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label VerticalAlignment="Center">Attribute Name :</Label>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"></TextBlock>
+                    <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Attribute Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}"></TextBlock>
                 </StackPanel>
 
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button Height="20" Tag="{Binding DisplayName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
+                    <Button Height="20" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Tag="{Binding DisplayName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
                         <Button.ToolTip>
-                            <ToolTip>
+                            <ToolTip Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">
                                 Insert Logical Name
                             </ToolTip>
                         </Button.ToolTip>
@@ -45,7 +46,7 @@
                     </Button>
                     <Button Height="20" Tag="{Binding DisplayName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="CopyName">
                         <Button.ToolTip>
-                            <ToolTip>
+                            <ToolTip Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">
                                 Copy Logical Name
                             </ToolTip>
                         </Button.ToolTip>
@@ -64,8 +65,8 @@
                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label VerticalAlignment="Center">Logical Name :</Label>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding LogicalName}"></TextBlock>
+                    <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Logical Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Text="{Binding LogicalName}"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
@@ -99,11 +100,11 @@
                     <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label VerticalAlignment="Center">Schema Name :</Label>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding SchemaName}"></TextBlock>
+                    <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Schema Name :</Label>
+                    <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Text="{Binding SchemaName}"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" >
                     <Button Height="20" Tag="{Binding SchemaName}" Width="20" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Click="InsertName">
                         <Button.ToolTip>
                             <ToolTip>
@@ -131,10 +132,10 @@
 
             <StackPanel Orientation="Horizontal">
 
-                <Label VerticalAlignment="Center">Attribute Type:</Label>
-                <TextBlock VerticalAlignment="Center" Text="{Binding AttributeType}"></TextBlock>
+                <Label VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}">Attribute Type:</Label>
+                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowTextBrushKey}}" Text="{Binding AttributeType}"></TextBlock>
             </StackPanel>
-            <StackPanel Name="Options" Visibility="Hidden">
+            <StackPanel Name="Options" Visibility="Hidden" Background="{DynamicResource {x:Static vs_shell:EnvironmentColors.ToolWindowBackgroundBrushKey}}">
 
                 <DataGrid CanUserAddRows="False" ItemsSource="{Binding OptionSet}" ColumnWidth="0.5*" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto" MaxHeight="400"></DataGrid>
             </StackPanel>

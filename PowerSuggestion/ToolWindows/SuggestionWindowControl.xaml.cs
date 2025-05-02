@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using static PowerSuggestion.Helpers.Enums;
 using XamlAnimatedGif;
+using PowerSuggestion.Helpers;
 
 
 namespace PowerSuggestion
@@ -26,6 +27,7 @@ namespace PowerSuggestion
             suggestionActions = new CRMSuggestionActions();
 
             InitializeComponent();
+            VsThemeHelper.ApplyThemedColors(this);
             AnimationBehavior.SetRepeatBehavior(BusyIcon, System.Windows.Media.Animation.RepeatBehavior.Forever);
             OnReset();
             this.SizeChanged += OnWindowSizeChanged;
