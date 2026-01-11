@@ -75,12 +75,36 @@ namespace PowerSuggestion.ToolWindows.Panels
             }
         }
         public void Search(object sender = null, RoutedEventArgs e = null)
-        {
-            List<Models.EntityMetadata> newList = new List<Models.EntityMetadata>();
-            newList.AddRange(entitiesData.Where(x => x.DisplayName.ToLower().Contains(SearchBox.Text.ToLower())).ToList());
-            newList.AddRange(entitiesData.Where(x => x.LogicalName.ToLower().Contains(SearchBox.Text.ToLower())).ToList());
+       {
+            if(SearchBox != null && !String.IsNullOrEmpty(SearchBox.Text) && entitiesData != null)
+            {
+                List<Models.EntityMetadata> newList = new List<Models.EntityMetadata>();
+                newList.AddRange(entitiesData?.Where(x => x.DisplayName.ToLower().Contains(SearchBox.Text.ToLower())).ToList());
+                newList.AddRange(entitiesData?.Where(x => x.LogicalName.ToLower().Contains(SearchBox.Text.ToLower())).ToList());
 
-            CreateEntityList(newList.Distinct().ToList());
+                CreateEntityList(newList.Distinct().ToList());
+            }
+            //if (entitiesData == null)
+            //    return;
+
+            //var searchText = SearchBox.Text;
+
+            //if (string.IsNullOrWhiteSpace(searchText))
+            //{
+            //    CreateEntityList(entitiesData.ToList());
+            //    return;
+            //}
+
+            //var result = entitiesData
+            //    .Where(x =>
+            //        (!string.IsNullOrEmpty(x.DisplayName) &&
+            //         x.DisplayName.Contains(searchText, StringComparison.OrdinalIgnoreCase)) ||
+            //        (!string.IsNullOrEmpty(x.LogicalName) &&
+            //         x.LogicalName.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+            //    )
+            //    .ToList();
+
+            //CreateEntityList(result);
         }
 
         public void OnReset(object sender = null, RoutedEventArgs e = null)
