@@ -52,6 +52,7 @@
 	<CommandPlacements>
 		<CommandPlacement guid="PowerSuggestion" id="WRMenu" priority="0xF00">
 			<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
 		</CommandPlacement>
 
 	</CommandPlacements>
